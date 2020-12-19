@@ -37,11 +37,11 @@ class _HomeState extends State<Home> {
             label: "More",
           ),
         ],
-      onTap: (index) {
+        onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
-      },
+        },
         selectedItemColor: Color.fromRGBO(0, 172, 223, 1),
         unselectedItemColor: Colors.grey,
       ),

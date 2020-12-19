@@ -5,7 +5,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.grey[200],
         body: SafeArea(
           child: Login(),
         ),
