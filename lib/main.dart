@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goscele/pages/Home.dart';
 import 'package:goscele/pages/Login.dart';
 
 void main() {
@@ -7,7 +8,7 @@ void main() {
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         body: SafeArea(
-          child: Login(),
+          child: Home(), //@TODO Ganti ke Login() kalau udah
         ),
       ),
     ),
