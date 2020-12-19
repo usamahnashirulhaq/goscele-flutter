@@ -31,7 +31,7 @@ class CustomTextField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
       ),
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
     );
   }
 }
