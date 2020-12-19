@@ -1,11 +1,12 @@
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class GoSceleTextField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String label;
   final bool obscure;
 
-  GoSceleTextField({
+  CustomTextField({
     this.label,
     this.obscure: false,
   });
@@ -15,9 +16,13 @@ class GoSceleTextField extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(this.label),
           TextField(
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(2),
+              labelText: label,
+              labelStyle: TextStyle(
+                letterSpacing: 0.5,
+              ),
               hoverColor: Color.fromRGBO(0, 172, 223, 1),
             ),
             obscureText: this.obscure,
@@ -26,7 +31,7 @@ class GoSceleTextField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
       ),
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
     );
   }
 }
