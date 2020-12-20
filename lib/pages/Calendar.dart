@@ -15,6 +15,7 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Container(
       child: CustomTabController(
+        backgroundColor: Color.fromRGBO(0, 172, 223, 1),
         appBarTitle: "Calendar",
         tabs: [
           CustomTab(

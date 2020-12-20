@@ -15,6 +15,7 @@ class _CoursesState extends State<Courses> {
   @override
   Widget build(BuildContext context) {
     return CustomTabController(
+      backgroundColor: Color.fromRGBO(0, 172, 223, 1),
       appBarTitle: "Courses",
       tabs: [
         CustomTab(
