@@ -12,6 +12,7 @@ class _AcademicState extends State<Academic> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(0, 172, 223, 1),
         title: Text("Academic Announcements"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search), onPressed: () {

@@ -7,12 +7,14 @@ class CustomTabController extends StatelessWidget {
   final List<CustomTab> tabs;
   final List<Widget> children;
   final List<Widget> actions;
+  final Color backgroundColor;
 
   CustomTabController({
     @required this.appBarTitle,
     @required this.tabs,
     @required this.children,
     this.actions,
+    this.backgroundColor,
   });
 
   @override
@@ -21,6 +23,7 @@ class CustomTabController extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: backgroundColor,
           title: Text(appBarTitle),
           bottom: TabBar(
             tabs: this.tabs,

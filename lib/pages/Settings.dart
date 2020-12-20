@@ -11,6 +11,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(0, 172, 223, 1),
         title: Text("Miscellaneous"),
       ),
       body: SingleChildScrollView(
@@ -73,12 +74,15 @@ class _SettingsState extends State<Settings> {
                     padding: EdgeInsets.all(20),
                   ),
                   Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.red)
+                    ),
                     child: Column(
                       children: [
                         Container(
                           child: Text(
                             "Sign out",
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16, color: Colors.red),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
                         ),
