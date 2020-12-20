@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:goscele/components/goscele_custom_card.dart';
 import 'package:goscele/components/goscele_custom_card_class_schedule_entry.dart';
 
-class JadwalKelasViewSection extends StatelessWidget {
+class AllCoursesViewSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //TODO ganti jadi Widget yang nampilin All Courses
     return SingleChildScrollView(
       child: Container(
         child: Column(
