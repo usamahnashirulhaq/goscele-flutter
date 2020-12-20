@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   PageController _pageController = PageController();
-  List<Widget> _screens = [Academic(), Calendar(), Courses(), Settings()];
+  List<Widget> _screens = [Academic(), Courses(), Calendar(), Settings()];
   int _currentIndex = 0;
 
   void _onPageChanged(int index) {
