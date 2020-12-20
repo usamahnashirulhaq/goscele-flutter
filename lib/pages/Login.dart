@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goscele/components/custom_text_field.dart';
-import 'package:goscele/components/sign_in_button.dart';
+import 'package:goscele/components/goscele_custom_text_field.dart';
+import 'package:goscele/components/goscele_sign_in_button.dart';
 
 import 'Home.dart';
 

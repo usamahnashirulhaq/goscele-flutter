@@ -11,7 +11,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pengaturan"),
+        title: Text("Miscellaneous"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -21,7 +21,7 @@ class _SettingsState extends State<Settings> {
                 children: [
                   Container(
                     child: Text(
-                      "Informasi Pengguna",
+                      "User Info",
                       style: TextStyle(fontSize: 23),
                     ),
                     padding: EdgeInsets.all(20),
@@ -31,7 +31,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Nama Lengkap",
+                            "Full Name",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
@@ -47,7 +47,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Nama Pengguna",
+                            "Username",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
@@ -67,7 +67,7 @@ class _SettingsState extends State<Settings> {
                 children: [
                   Container(
                     child: Text(
-                      "Akun",
+                      "Account",
                       style: TextStyle(fontSize: 23),
                     ),
                     padding: EdgeInsets.all(20),
@@ -77,12 +77,12 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Keluar",
+                            "Sign out",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
                         ),
-                        Text("Hapus data aplikasi dan keluar"),
+                        Text("Delete app cache and exit"),
                       ],
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                     ),
@@ -97,7 +97,7 @@ class _SettingsState extends State<Settings> {
                 children: [
                   Container(
                     child: Text(
-                      "Tentang Aplikasi",
+                      "About Application",
                       style: TextStyle(fontSize: 23),
                     ),
                     padding: EdgeInsets.all(20),
@@ -107,7 +107,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Nama Aplikasi",
+                            "Application Name",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
@@ -123,7 +123,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Versi Aplikasi",
+                            "Application Version",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
@@ -139,7 +139,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Kanal Pengembangan",
+                            "Development Chanel",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
@@ -155,7 +155,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Repositori Github",
+                            "Github Repository",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
@@ -171,7 +171,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Lisensi",
+                            "Lisence",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),

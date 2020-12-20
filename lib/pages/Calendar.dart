@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:goscele/components/goscele_custom_tab.dart';
+import 'package:goscele/components/goscele_custom_tab_controller.dart';
 import 'package:goscele/pages/subpages/CalendarViewSection.dart';
-import 'package:goscele/pages/subpages/JadwalKelasViewSection.dart';
+import 'package:goscele/pages/subpages/ClassScheduleViewSection.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -12,47 +14,22 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("Calendar"),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  child: Row(
-                    children: [
-                      Icon(Icons.date_range),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
-                      ),
-                      Text("Deadline"),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-                Tab(
-                  child: Row(
-                    children: [
-                      Icon(Icons.access_time),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
-                      ),
-                      Text("Class Schedule"),
-                    ],
-                    mainAxisAlignment: MainAxisAlignment.center,
-                  ),
-                ),
-              ],
-            ),
+      child: CustomTabController(
+        appBarTitle: "Calendar",
+        tabs: [
+          CustomTab(
+            title: "Deadline",
+            icon: Icons.date_range,
           ),
-          body: TabBarView(
-            children: [
-              CalendarViewSection(),
-              JadwalKelasViewSection(),
-            ],
-          ),
-        ),
+          CustomTab(
+            title: "Class Schedule",
+            icon: Icons.access_time,
+          )
+        ],
+        children: [
+          CalendarViewSection(),
+          ClassScheduleViewSection(),
+        ],
       ),
     );
   }

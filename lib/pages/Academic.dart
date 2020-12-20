@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goscele/components/data_search.dart';
+import 'package:goscele/components/goscele_forum_academic_data_search.dart';
 
 class Academic extends StatefulWidget {
   @override
@@ -12,10 +12,10 @@ class _AcademicState extends State<Academic> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pengumuman Akademis"),
+        title: Text("Academic Announcements"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search), onPressed: () {
-            showSearch(context: context, delegate: DataSearch());
+            showSearch(context: context, delegate: ForumDataSearch());
           })
         ],
       ),
