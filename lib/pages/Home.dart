@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Academic.dart';
-import 'Calendar.dart';
+import 'Schedule.dart';
 import 'Courses.dart';
 import 'Settings.dart';
 
@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   PageController _pageController = PageController();
-  List<Widget> _screens = [Academic(), Courses(), Calendar(), Settings()];
+  List<Widget> _screens = [Academic(), Courses(), Schedule(), Settings()];
   int _currentIndex = 0;
 
   void _onPageChanged(int index) {
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.schedule),
-            label: "Calendar",
+            label: "Schedule",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.more_horiz),

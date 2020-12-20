@@ -75,7 +75,8 @@ class _SettingsState extends State<Settings> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.red)
+                      border: Border.all(color: Colors.red, ),
+                      borderRadius: BorderRadius.all(Radius.circular(4.0))
                     ),
                     child: Column(
                       children: [
@@ -143,7 +144,7 @@ class _SettingsState extends State<Settings> {
                       children: [
                         Container(
                           child: Text(
-                            "Development Chanel",
+                            "Development Channel",
                             style: TextStyle(fontSize: 16),
                           ),
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 2),

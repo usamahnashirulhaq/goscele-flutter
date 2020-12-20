@@ -5,21 +5,21 @@ import 'package:goscele/components/goscele_custom_tab_controller.dart';
 import 'package:goscele/pages/subpages/CalendarViewSection.dart';
 import 'package:goscele/pages/subpages/ClassScheduleViewSection.dart';
 
-class Calendar extends StatefulWidget {
+class Schedule extends StatefulWidget {
   @override
-  _CalendarState createState() => _CalendarState();
+  _ScheduleState createState() => _ScheduleState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _ScheduleState extends State<Schedule> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: CustomTabController(
         backgroundColor: Color.fromRGBO(0, 172, 223, 1),
-        appBarTitle: "Calendar",
+        appBarTitle: "Schedule",
         tabs: [
           CustomTab(
-            title: "Deadline",
+            title: "Calendar",
             icon: Icons.date_range,
           ),
           CustomTab(

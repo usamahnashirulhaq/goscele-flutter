@@ -8,7 +8,7 @@ void main() {
    * @statusBarColor mengubah status bar aplikasi menjadi warna biru dengan kode ARGB(0, 142, 223, 1)
    */
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Color.fromRGBO(0, 142, 223, 1),
+    statusBarColor: Color.fromRGBO(0, 172, 223, 1),
   ));
 
 
