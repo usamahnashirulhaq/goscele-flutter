@@ -1,57 +1,95 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goscele/components/goscele_custom_text_field.dart';
 import 'package:goscele/components/goscele_sign_in_button.dart';
-
-import 'Home.dart';
+import 'package:goscele/pages/login_viewmodel.dart';
+import 'package:stacked/stacked.dart';
 
 class Login extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
+
+  String username;
+  String password;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
+    return ViewModelBuilder<LoginViewModel>.nonReactive(
+      viewModelBuilder: () => LoginViewModel(),
+      builder: (context, model, child) {
+        return Container(
+          child: Column(
             children: [
-              Image.asset(
-                "images/ic_launcher.png",
-                height: 100,
+              Row(
+                children: [
+                  Image.asset(
+                    "images/ic_launcher.png",
+                    height: 100,
+                  ),
+                  Text(
+                    "GoScele",
+                    style: TextStyle(
+                      fontSize: 40,
+                      letterSpacing: 1,
+                    ),
+                  )
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
               ),
-              Text(
-                "GoScele",
-                style: TextStyle(
-                  fontSize: 40,
-                  letterSpacing: 1,
-                ),
-              )
+              Column(
+                children: [
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) return 'Username is required.';
+                            else return null;
+                          },
+                          decoration: InputDecoration(labelText: 'Username'),
+                          onEditingComplete: () {
+                            _formKey.currentState.validate();
+                            FocusScope.of(context).nextFocus();
+                          },
+                          onSaved: (value) => username = value,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) return 'Password is required.';
+                            else return null;
+                          },
+                          obscureText: true,
+                          decoration: InputDecoration(labelText: 'Password'),
+                          onEditingComplete: () {
+                            _formKey.currentState.validate();
+                            FocusScope.of(context).unfocus();
+                          },
+                          onSaved: (value) => password = value,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  SignInButton(
+                    text: "Sign In",
+                    onPressed: () {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      if (_formKey.currentState.validate()) {
+                        _formKey.currentState.save();
+                        model.login(username, password);
+                      }
+                    },
+                    color: Color.fromRGBO(0, 172, 223, 1),
+                    textColor: Colors.white,
+                  )
+                ],
+              ),
             ],
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
           ),
-          Column(
-            children: [
-              CustomTextField(
-                label: "Username",
-              ),
-              CustomTextField(
-                label: "Password",
-                obscure: true,
-              ),
-              SignInButton(
-                text: "Sign In",
-                onPressed: () {
-                  Navigator.pushReplacement(
-                      context, MaterialPageRoute(builder: (context) => Home()));
-                },
-                color: Color.fromRGBO(0, 172, 223, 1),
-                textColor: Colors.white,
-              )
-            ],
-          ),
-        ],
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-      ),
-      padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+          padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+        );
+      },
     );
   }
 }
