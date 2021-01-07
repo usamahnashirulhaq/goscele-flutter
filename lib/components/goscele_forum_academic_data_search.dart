@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ForumDataSearch extends SearchDelegate<String> {
@@ -70,7 +69,7 @@ class ForumDataSearch extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     final _suggestionList = query.isEmpty
         ? _recent
-        : _data.where((element) => element.toLowerCase().startsWith(query.toLowerCase())).toList();
+        : _data.where((element) => element.toLowerCase().contains(query.toLowerCase())).toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
@@ -83,7 +82,8 @@ class ForumDataSearch extends SearchDelegate<String> {
             text: TextSpan(
                 text: _suggestionList[index].substring(0, query.length),
                 style: TextStyle(
-                    color: Colors.black87, fontWeight: FontWeight.bold),
+                    color: Colors.black54),
+                    // color: Colors.black87, fontWeight: FontWeight.bold),
                 children: [
               TextSpan(
                   text: _suggestionList[index].substring(query.length),
