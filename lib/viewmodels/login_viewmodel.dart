@@ -25,4 +25,17 @@ class LoginViewModel extends BaseViewModel with FailureListener {
       future: _dialogResponse,
     );
   }
+
+  void logout(){
+    _dialogResponse = _dialogService.showCustomDialog(
+      variant: DialogType.loader,
+      title: 'Logging out ...',
+      customData: _authService.logout(),
+    );
+
+    listenToFailures(
+      _authService.hasFailure,
+      future: _dialogResponse,
+    );
+  }
 }
