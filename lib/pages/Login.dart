@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:goscele/components/goscele_sign_in_button.dart';
-import 'package:goscele/pages/login_viewmodel.dart';
+import 'package:goscele/viewmodels/login_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class Login extends StatelessWidget {
