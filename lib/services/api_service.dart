@@ -11,7 +11,7 @@ import 'package:goscele/utils/constants.dart';
 /// Service to handle all API call requests.
 class ApiService {
   static final _httpService = locator<HttpService>();
-  static final _userDataService = locator<UserDataService>();
+  static final _userDataRepository = locator<UserDataRepository>();
 
   /// Login to Moodle service. Returns either a [Failure] or a [LoginResponse].
   Future<Either<Failure, LoginResponse>> login(
@@ -126,7 +126,7 @@ class ApiService {
     if (usesServiceParam)
       cParams.putIfAbsent(Constants.paramService, () => Constants.valueService);
     if (usesToken)
-      cParams.putIfAbsent(Constants.paramToken, () => _userDataService.token);
+      cParams.putIfAbsent(Constants.paramToken, () => _userDataRepository.token);
 
     // Concatenate params
     final coreParams = {

@@ -14,16 +14,16 @@ void setupLocator() {
   locator.registerSingleton(ConnectivityService());
   locator.registerSingleton(HttpService());
   locator.registerSingletonAsync<HiveService>(() async => HiveService().init());
-  locator.registerSingletonAsync<UserDataService>(
-    () async => UserDataService(),
+  locator.registerSingletonAsync<UserDataRepository>(
+    () async => UserDataRepository(),
     dependsOn: [HiveService],
   );
   locator.registerSingletonAsync<ApiService>(
     () async => ApiService(),
-    dependsOn: [UserDataService],
+    dependsOn: [UserDataRepository],
   );
   locator.registerSingletonAsync<AuthService>(
         () async => AuthService(),
-    dependsOn: [UserDataService, ApiService],
+    dependsOn: [UserDataRepository, ApiService],
   );
 }

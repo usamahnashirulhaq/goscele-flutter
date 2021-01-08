@@ -4,7 +4,7 @@ import 'package:goscele/utils/constants.dart';
 
 /// Service class to handle the data access and storage of the user that is
 /// currently logged in.
-class UserDataService {
+class UserDataRepository {
   static final _userInfoBox = locator<HiveService>().boxUserInfo;
 
   int get userID => _userInfoBox.get(Constants.hiveKeyUserID);
