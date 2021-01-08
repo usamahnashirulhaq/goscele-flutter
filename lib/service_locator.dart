@@ -16,19 +16,10 @@ void setupLocator() {
   locator.registerSingleton(ConnectivityService());
   locator.registerSingleton(HttpService());
   locator.registerSingletonAsync<HiveService>(() async => HiveService().init());
-  locator.registerSingletonAsync<ApiService>(
-    () async => ApiService(),
-    dependsOn: [UserDataRepository, UserCoursesRepository],
-  );
 
-  locator.registerSingletonAsync<AuthService>(
-        () async => AuthService(),
-    dependsOn: [UserDataRepository, ApiService],
-  );
-
-  locator.registerSingletonAsync<UserCoursesService>(
-        () async => UserCoursesService(),
-    dependsOn: [UserCoursesRepository, ApiService],
+  locator.registerSingletonAsync<UserCoursesRepository>(
+        () async => UserCoursesRepository(),
+    dependsOn: [HiveService],
   );
 
   locator.registerSingletonAsync<UserDataRepository>(
@@ -36,8 +27,18 @@ void setupLocator() {
     dependsOn: [HiveService],
   );
 
-  locator.registerSingletonAsync<UserCoursesRepository>(
-        () async => UserCoursesRepository(),
-    dependsOn: [HiveService],
+  locator.registerSingletonAsync<ApiService>(
+        () async => ApiService(),
+    dependsOn: [UserDataRepository],
+  );
+
+  locator.registerSingletonAsync<UserCoursesService>(
+        () async => UserCoursesService(),
+    dependsOn: [UserCoursesRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<AuthService>(
+        () async => AuthService(),
+    dependsOn: [UserDataRepository, ApiService],
   );
 }

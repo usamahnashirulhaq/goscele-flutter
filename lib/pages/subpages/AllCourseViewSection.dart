@@ -1,34 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goscele/components/goscele_custom_card.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:goscele/components/goscele_custom_card_class_schedule_entry.dart';
+import 'package:goscele/viewmodels/courses_viewmodel.dart';
+import 'package:stacked_hooks/stacked_hooks.dart';
 
-class AllCoursesViewSection extends StatelessWidget {
+class AllCoursesViewSection extends HookViewModelWidget<CoursesViewModel> {
   @override
-  Widget build(BuildContext context) {
-    //TODO ganti jadi Widget yang nampilin All Courses
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [
-            CustomCard(
-              title: "Monday",
-              fills: [],
-            ),
-            CustomCard(
-              title: "Tuesday",
-              fills: [
-                CustomCardClassScheduleEntry(
-                  "TKBM TPL",
-                  "R. 2.2302",
-                  "09.00 - 15.30",
-                ),
-              ],
-            )
-          ],
-        ),
-        padding: EdgeInsets.all(10),
-      ),
-    );
+  Widget buildViewModelWidget(BuildContext context,
+      CoursesViewModel viewModel) {
+    final courses = useValueListenable(viewModel.courses);
+
+    return ListView.builder(
+        itemCount: courses.length,
+        itemBuilder: (context, index) {
+          final course = courses[index];
+          return CustomCardClassScheduleEntry(
+            course.fullname,
+            course.shortname,
+            course.category.toString(),
+          );
+        });
   }
 }

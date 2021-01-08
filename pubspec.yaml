@@ -30,6 +30,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^0.8.2 # Extension for Hive to generate class adapters
+  build_runner:
 
 flutter:
   uses-material-design: true

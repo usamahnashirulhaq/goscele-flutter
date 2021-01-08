@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:goscele/failures/failures.dart';
 import 'package:goscele/failures/network_failure.dart';
 import 'package:goscele/models/responses/responses.dart';
-import 'package:goscele/models/responses/user_courses_response.dart';
+import 'package:goscele/models/user_course.dart';
 import 'package:goscele/service_locator.dart';
 import 'package:goscele/services/services.dart';
 import 'package:goscele/utils/constants.dart';
@@ -79,28 +79,27 @@ class ApiService {
 
   /// Retrieves courses enrolled by user based on the [userId]. Returns either a [Failure] or
   /// a [UserCoursesResponse].
-  Future<Either<Failure, UserCoursesResponse>> getUserCourses(int userId) async {
+  Future<Either<Failure, List<UserCourse>>> getUserCourses(int userId) async {
     // Required params
     final params = {
       Constants.paramFunction: Constants.getUserCourses,
-      Constants.paramField: Constants.valueUserId,
-      Constants.paramValues: [userId],
+      Constants.paramUserId: userId,
     };
 
     // Response validator
-    final Either<Failure, UserCoursesResponse> Function(Response) validator = (r) {
+    final Either<Failure, List<UserCourse>> Function(Response) validator = (r) {
       try {
         final courses = usersCoursesFromJson(r.data);
         if (courses.isEmpty)
           return left(NetworkFailure.responseFailure(4));
         else
-          return right(courses.first);
+          return right(courses);
       } catch (_) {
         return left(NetworkFailure.cancelled);
       }
     };
 
-    return await _apiRequestHelper<UserCoursesResponse>(
+    return await _apiRequestHelper<List<UserCourse>>(
       Constants.webServiceUrl,
       params,
       validator,

@@ -18,6 +18,7 @@ class Constants {
   static const hiveKeyCourseShortname = 'shortname';
   static const hiveKeyCourseFullname = 'fullname';
   static const hiveKeyCourseCategory = 'category';
+  static const hiveAdapterCourse = 1;
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
@@ -37,10 +38,10 @@ class Constants {
   static const paramPassword = 'password';
   static const paramField = 'field';
   static const paramValues = 'values';
+  static const paramUserId = 'userid';
 
   // API values
   static const valueService = 'moodle_mobile_app';
   static const valueJsonFormat = 'json';
   static const valueUsername = 'username';
-  static const valueUserId = 'userid';
 }

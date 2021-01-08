@@ -1,3 +1,4 @@
+import 'package:goscele/models/user_course.dart';
 import 'package:goscele/utils/constants.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -6,7 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 /// Uses Hive boxes to store the data.
 class HiveService {
   Box<dynamic> boxUserInfo;
-  Box<dynamic> boxUserCourses;
+  Box<UserCourse> boxUserCourses;
 
   Future<HiveService> init() async {
     await Hive.initFlutter();
@@ -17,16 +18,18 @@ class HiveService {
 
   /// Hive needs to register class adapters in case of storing complex objects
   /// to the boxes. Register the class adapters here.
-  void _registerAdapters() {}
+  void _registerAdapters() {
+    Hive.registerAdapter<UserCourse>(UserCourseAdapter());
+  }
 
   /// Opens all the boxes. This will allow the app to use them to access the
   /// data stored in the local storage.
   Future<void> _openBoxes() async {
     await Hive.openBox<dynamic>(Constants.hiveBoxUserInfo);
-    await Hive.openBox<dynamic>(Constants.hiveBoxUserCourses);
+    await Hive.openBox<UserCourse>(Constants.hiveBoxUserCourses);
 
     boxUserInfo = Hive.box<dynamic>(Constants.hiveBoxUserInfo);
-    boxUserCourses = Hive.box<dynamic>(Constants.hiveBoxUserCourses);
+    boxUserCourses = Hive.box<UserCourse>(Constants.hiveBoxUserCourses);
   }
 
   /// Clears all the data stored in all boxes.
