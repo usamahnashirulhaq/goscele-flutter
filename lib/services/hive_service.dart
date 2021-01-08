@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 /// Uses Hive boxes to store the data.
 class HiveService {
   Box<dynamic> boxUserInfo;
+  Box<dynamic> boxUserCourses;
 
   Future<HiveService> init() async {
     await Hive.initFlutter();
@@ -22,13 +23,16 @@ class HiveService {
   /// data stored in the local storage.
   Future<void> _openBoxes() async {
     await Hive.openBox<dynamic>(Constants.hiveBoxUserInfo);
+    await Hive.openBox<dynamic>(Constants.hiveBoxUserCourses);
 
     boxUserInfo = Hive.box<dynamic>(Constants.hiveBoxUserInfo);
+    boxUserCourses = Hive.box<dynamic>(Constants.hiveBoxUserCourses);
   }
 
   /// Clears all the data stored in all boxes.
   Future<void> clearBoxes() async {
     await boxUserInfo.clear();
+    await boxUserCourses.clear();
   }
 
   /// Close the boxes so they may not be accessible anymore unless reopened.

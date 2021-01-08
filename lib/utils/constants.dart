@@ -1,6 +1,7 @@
 class Constants {
   // Hive boxes names
   static const hiveBoxUserInfo = 'user_info';
+  static const hiveBoxUserCourses = 'user_courses';
 
   // Hive box keys
   static const hiveKeyUserID = 'id';
@@ -19,6 +20,7 @@ class Constants {
 
   // API endpoints
   static const getUserByField = 'core_user_get_users_by_field';
+  static const getUserCourses = 'core_enrol_get_users_courses';
 
   // API params
   static const paramFunction = 'wsfunction';
@@ -34,4 +36,5 @@ class Constants {
   static const valueService = 'moodle_mobile_app';
   static const valueJsonFormat = 'json';
   static const valueUsername = 'username';
+  static const valueUserId = 'userid';
 }
