@@ -3,7 +3,7 @@ class Constants {
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
 
-  // Hive box keys
+  // Hive user data box keys
   static const hiveKeyUserID = 'id';
   static const hiveKeyUserToken = 'token';
   static const hiveKeyUsername = 'username';
@@ -12,6 +12,12 @@ class Constants {
   static const hiveKeyUserEmail = 'email';
   static const hiveKeyUserProfileImageUrl = 'profileImageUrl';
   static const hiveKeyUserProfileImageUrlSmall = 'profileImageUrlSmall';
+
+  // Hive user courses box keys
+  static const hiveKeyCourseID = 'id';
+  static const hiveKeyCourseShortname = 'shortname';
+  static const hiveKeyCourseFullname = 'fullname';
+  static const hiveKeyCourseCategory = 'category';
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
