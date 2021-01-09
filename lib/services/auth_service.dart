@@ -4,12 +4,12 @@ import 'package:goscele/models/responses/responses.dart';
 import 'package:goscele/service_locator.dart';
 import 'package:goscele/services/api_service.dart';
 import 'package:goscele/services/hive_service.dart';
-import 'package:goscele/services/user_data_service.dart';
+import 'package:goscele/repositories/user_data_repository.dart';
 
 /// Service to handle all functionalities related to authentication.
 class AuthService {
   static final _apiService = locator<ApiService>();
-  static final _userData = locator<UserDataService>();
+  static final _userData = locator<UserDataRepository>();
 
   ValueNotifier<bool> isAuthenticated = ValueNotifier(false);
   ValueNotifier<Failure> hasFailure = ValueNotifier(const NoFailure());

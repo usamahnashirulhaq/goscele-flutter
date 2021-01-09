@@ -1,6 +1,5 @@
 import 'package:goscele/service_locator.dart';
 import 'package:goscele/services/auth_service.dart';
-import 'package:goscele/services/user_data_service.dart';
 import 'package:goscele/setup_dialog_ui.dart';
 import 'package:goscele/utils/failure_listener_mixin.dart';
 import 'package:stacked/stacked.dart';

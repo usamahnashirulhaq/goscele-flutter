@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:goscele/components/goscele_custom_card_class_schedule_entry.dart';
 
 class CustomCard extends StatelessWidget {
   final String title;
-  List<CustomCardClassScheduleEntry> fills;
+  List<Widget> fills;
 
   CustomCard({@required this.title, this.fills});
 
@@ -14,7 +13,7 @@ class CustomCard extends StatelessWidget {
       Container(
         child: Text(
           this.title,
-          style: TextStyle(fontSize: 23),
+          style: TextStyle(fontSize: 18),
         ),
       ),
       Padding(
@@ -32,8 +31,11 @@ class CustomCard extends StatelessWidget {
             children: [
               Text(
                 "(empty)",
-                style: TextStyle(fontSize: 16),
-              )
+                style: TextStyle(fontSize: 12),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 10),
+              ),
             ],
           ),
         ),
@@ -42,7 +44,7 @@ class CustomCard extends StatelessWidget {
 
     return Card(
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.fromLTRB(20,10,20,0),
         child: Column(
           children: bodyWidget,
           crossAxisAlignment: CrossAxisAlignment.stretch,
