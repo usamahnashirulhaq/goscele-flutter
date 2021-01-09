@@ -4,6 +4,7 @@ class NetworkFailure {
   static const noConnection = NoConnection();
   static const connectionTimeout = ConnectionTimeout();
   static const cancelled = RequestCancelled();
+  static const emptyResponse = EmptyResponse();
 
   static responseFailure(int statusCode) => ResponseFailure(statusCode);
 }
@@ -36,6 +37,16 @@ class RequestCancelled implements Failure {
 
   @override
   String get message => 'Request cancelled';
+}
+
+class EmptyResponse implements Failure {
+  const EmptyResponse();
+
+  @override
+  String get code => 'N4';
+
+  @override
+  String get message => 'Fetched empty response';
 }
 
 class ResponseFailure implements Failure {

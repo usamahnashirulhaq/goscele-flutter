@@ -19,6 +19,7 @@ class Constants {
 
   // API endpoints
   static const getUserByField = 'core_user_get_users_by_field';
+  static const getForumById = 'mod_forum_get_forum_discussions_paginated';
 
   // API params
   static const paramFunction = 'wsfunction';
@@ -29,9 +30,13 @@ class Constants {
   static const paramPassword = 'password';
   static const paramField = 'field';
   static const paramValues = 'values';
+  static const paramForum = 'forumid';
 
   // API values
   static const valueService = 'moodle_mobile_app';
   static const valueJsonFormat = 'json';
   static const valueUsername = 'username';
+
+  // Forum IDs
+  static const generalForumId = 1;
 }
