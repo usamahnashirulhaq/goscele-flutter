@@ -8,6 +8,7 @@ import 'package:goscele/pages/subpages/CurrentCourseViewSection.dart';
 import 'package:goscele/viewmodels/courses_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
+
 class Courses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

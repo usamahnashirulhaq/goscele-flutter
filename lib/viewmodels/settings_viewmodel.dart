@@ -8,6 +8,8 @@ import 'package:stacked_services/stacked_services.dart';
 class SettingsViewModel extends BaseViewModel with FailureListener {
   static final _authService = locator<AuthService>();
   static final _dialogService = locator<DialogService>();
+  static final _userDataService = locator<UserDataService>();
+
 
   Future<DialogResponse> _dialogResponse;
 
@@ -25,4 +27,8 @@ class SettingsViewModel extends BaseViewModel with FailureListener {
       future: _dialogResponse,
     );
   }
+
+  String getFullname() => "${_userDataService.firstName} ${_userDataService.lastName}";
+
+  String getUsername() => "${_userDataService.username}";
 }
