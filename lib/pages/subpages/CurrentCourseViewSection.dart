@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:goscele/components/goscele_custom_card.dart';
-import 'package:goscele/components/goscele_custom_card_class_schedule_entry.dart';
+import 'package:goscele/components/goscele_custom_card_course.dart';
 
 class CurrentCoursesViewSection extends StatelessWidget {
   @override
@@ -18,10 +18,8 @@ class CurrentCoursesViewSection extends StatelessWidget {
             CustomCard(
               title: "Tuesday",
               fills: [
-                CustomCardClassScheduleEntry(
+                CustomCardCourse(
                   "TKBM TPL",
-                  "R. 2.2302",
-                  "09.00 - 15.30",
                 ),
               ],
             )

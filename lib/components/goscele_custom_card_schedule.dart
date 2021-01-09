@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class CustomCardClassScheduleEntry extends StatelessWidget {
+class CustomCardSchedule extends StatelessWidget {
   final String title;
   final String subtitle;
   final String rightSubtitle;
 
-  CustomCardClassScheduleEntry(this.title, this.subtitle, this.rightSubtitle);
+  CustomCardSchedule(this.title, this.subtitle, this.rightSubtitle);
 
   @override
   Widget build(BuildContext context) {
