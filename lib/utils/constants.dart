@@ -62,4 +62,8 @@ class Constants {
 
   // Forum IDs
   static const generalForumId = 1;
+
+  static var paramSortDirection = "sortdirection";
+  static var sortDirectionAsc = "ASC";
+  static var sortDirectionDesc = "DESC";
 }

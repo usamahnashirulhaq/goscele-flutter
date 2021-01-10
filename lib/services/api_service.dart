@@ -83,7 +83,7 @@ class ApiService {
     // Required params
     final params = {
       Constants.paramFunction: Constants.getForumById,
-      Constants.paramForum: id
+      Constants.paramForum: id,
     };
 
     // Response validator

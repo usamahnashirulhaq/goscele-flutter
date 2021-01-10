@@ -6,11 +6,8 @@ class CustomCardForum extends StatelessWidget {
   final String author;
   final DateTime postdate;
   final String message;
-  final bool hasParent;
-  final bool hasReply;
 
-  CustomCardForum(
-      this.author, this.postdate, this.message, this.hasParent, this.hasReply);
+  CustomCardForum(this.author, this.postdate, this.message);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class CustomCardForum extends StatelessWidget {
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
               Text(
-                DateFormat('dd MMMM yyyy kk:mm').format(postdate),
+                DateFormat('dd MMMM yyyy H:mm').format(postdate),
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
             ],
@@ -51,16 +48,16 @@ class CustomCardForum extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Attachments",
+                "",
                 style: TextStyle(fontSize: 12),
               ),
               Text(
-                "Reply",
+                "view details...",
                 style: TextStyle(fontSize: 12),
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          )
+          ),
         ],
       ),
     );
