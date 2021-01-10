@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:goscele/repositories/course_assignments_repository.dart';
 import 'package:goscele/repositories/user_courses_repository.dart';
 import 'package:goscele/services/user_courses_service.dart';
 import 'package:goscele/services/services.dart';
@@ -27,6 +28,11 @@ void setupLocator() {
     dependsOn: [HiveService],
   );
 
+  locator.registerSingletonAsync<CourseAssignmentsRepository>(
+        () async => CourseAssignmentsRepository(),
+    dependsOn: [HiveService],
+  );
+
   locator.registerSingletonAsync<ApiService>(
         () async => ApiService(),
     dependsOn: [UserDataRepository],
@@ -35,6 +41,11 @@ void setupLocator() {
   locator.registerSingletonAsync<UserCoursesService>(
         () async => UserCoursesService(),
     dependsOn: [UserCoursesRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<CourseAssignmentsService>(
+        () async => CourseAssignmentsService(),
+    dependsOn: [CourseAssignmentsRepository, ApiService],
   );
 
   locator.registerSingletonAsync<AuthService>(
