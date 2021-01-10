@@ -2,6 +2,7 @@ class Constants {
   // Hive boxes names
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
+  static const hiveBoxForum = 'forum';
 
   // Hive user data box keys
   static const hiveKeyUserID = 'id';
@@ -19,6 +20,18 @@ class Constants {
   static const hiveKeyCourseFullname = 'fullname';
   static const hiveKeyCourseCategory = 'category';
   static const hiveAdapterCourse = 1;
+
+  // Hive forum box keys
+  static const hiveKeyForumId = "id";
+  static const hiveKeyForumName = "name";
+  static const hiveKeyForumDiscussion = "discussion";
+  static const hiveKeyForumTimemodified = "timemodified";
+  static const hiveKeyForumUserfullname = "userfullname";
+  static const hiveKeyForumSubject = "subject";
+  static const hiveKeyForumMessage = "message";
+  static const hiveKeyForumCreated = "created";
+  static const hiveKeyForumNumreplies = "numreplies";
+  static const hiveAdapterForum = 3;
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';

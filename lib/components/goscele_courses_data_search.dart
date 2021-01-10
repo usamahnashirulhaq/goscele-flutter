@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CoursesDataSearch extends SearchDelegate<String> {
@@ -44,13 +43,14 @@ class CoursesDataSearch extends SearchDelegate<String> {
     );
   }
 
-
-
   @override
   Widget buildSuggestions(BuildContext context) {
     final _suggestionList = query.isEmpty
         ? _recent
-        : _data.where((element) => element.toLowerCase().startsWith(query.toLowerCase())).toList();
+        : _data
+            .where((element) =>
+                element.toLowerCase().startsWith(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
@@ -71,7 +71,6 @@ class CoursesDataSearch extends SearchDelegate<String> {
             ])),
       ),
       itemCount: _suggestionList.length,
-
     );
   }
 }

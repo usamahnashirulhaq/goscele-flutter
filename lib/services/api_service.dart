@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:goscele/failures/failures.dart';
 import 'package:goscele/failures/network_failure.dart';
-import 'package:goscele/models/responses/discussion_response.dart';
+import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/models/responses/responses.dart';
 import 'package:goscele/models/user_course.dart';
 import 'package:goscele/service_locator.dart';
@@ -78,30 +78,28 @@ class ApiService {
     );
   }
 
-  /// Retrieves a list of replies in academic announcements discussion. Returns either a [Failure] or
-  /// a [ForumResponse].
-  Future<Either<Failure, DiscussionResponse>> getAcademicAnnouncements() async {
+  /// Retrieves a list of replies in academic announcements discussion.
+  Future<Either<Failure, List<Discussion>>> getForumData(int id) async {
     // Required params
     final params = {
       Constants.paramFunction: Constants.getForumById,
-      Constants.paramValues: Constants.generalForumId
+      Constants.paramForum: id
     };
 
     // Response validator
-    final Either<Failure, DiscussionResponse> Function(Response) validator =
-        (r) {
+    final Either<Failure, List<Discussion>> Function(Response) validator = (r) {
       try {
-        final discussionResponse = DiscussionResponse.fromJson(r.data);
-        if (discussionResponse.discussions.isEmpty)
+        final forumResponse = forumResponseFromJson(r.data);
+        if (forumResponse.discussions.isEmpty)
           return left(NetworkFailure.emptyResponse);
         else
-          return right(discussionResponse);
+          return right(forumResponse.discussions);
       } catch (_) {
         return left(NetworkFailure.emptyResponse);
       }
     };
 
-    return await _apiRequestHelper<DiscussionResponse>(
+    return await _apiRequestHelper<List<Discussion>>(
       Constants.webServiceUrl,
       params,
       validator,
