@@ -14,8 +14,6 @@ class ForumService {
 
   ValueNotifier<Failure> hasFailure = ValueNotifier(const NoFailure());
 
-  /// Retrieves user courses data from the backend to be stored locally.
-  /// Sets [hasFailure] value if there is any failure.
   Future<void> getGeneralForumData() async {
     hasFailure.value = const NoFailure();
     final response = await _apiService.getForumData(Constants.generalForumId);

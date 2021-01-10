@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:goscele/repositories/discussion_repository.dart';
 import 'package:goscele/repositories/forum_repository.dart';
 import 'package:goscele/repositories/user_courses_repository.dart';
 import 'package:goscele/services/forum_service.dart';
@@ -30,7 +31,12 @@ void setupLocator() {
   );
 
   locator.registerSingletonAsync<ForumRepository>(
-    () async => ForumRepository(),
+        () async => ForumRepository(),
+    dependsOn: [HiveService],
+  );
+
+  locator.registerSingletonAsync<DiscussionRepository>(
+        () async => DiscussionRepository(),
     dependsOn: [HiveService],
   );
 
@@ -52,5 +58,10 @@ void setupLocator() {
   locator.registerSingletonAsync<ForumService>(
     () async => ForumService(),
     dependsOn: [ForumRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<DiscussionService>(
+        () async => DiscussionService(),
+    dependsOn: [DiscussionRepository, ApiService],
   );
 }

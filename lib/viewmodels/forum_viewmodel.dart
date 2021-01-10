@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/repositories/forum_repository.dart';
@@ -19,7 +17,6 @@ class ForumViewModel extends BaseViewModel with FailureListener {
 
   void onModelReady() {
     _forumService.getGeneralForumData();
-    /// Listen to local storage changes and update live data (user_course)
     _forumBox.listenable().addListener(() {
       discussions.value = _forumBox.values.toList();
     });

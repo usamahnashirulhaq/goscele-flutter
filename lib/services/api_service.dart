@@ -83,7 +83,7 @@ class ApiService {
     // Required params
     final params = {
       Constants.paramFunction: Constants.getForumById,
-      Constants.paramForum: id,
+      Constants.paramForumId: id,
     };
 
     // Response validator
@@ -100,6 +100,34 @@ class ApiService {
     };
 
     return await _apiRequestHelper<List<Discussion>>(
+      Constants.webServiceUrl,
+      params,
+      validator,
+    );
+  }
+
+  /// Retrieves a list of replies in academic announcements discussion.
+  Future<Either<Failure, List<Post>>> getDiscussionData(int id) async {
+    // Required params
+    final params = {
+      Constants.paramFunction: Constants.getDiscussionById,
+      Constants.paramDiscussionId: id,
+    };
+
+    // Response validator
+    final Either<Failure, List<Post>> Function(Response) validator = (r) {
+      try {
+        final discussionResponse = postsResponseFromJson(r.data);
+        if (discussionResponse.posts.isEmpty)
+          return left(NetworkFailure.emptyResponse);
+        else
+          return right(discussionResponse.posts);
+      } catch (_) {
+        return left(NetworkFailure.emptyResponse);
+      }
+    };
+
+    return await _apiRequestHelper<List<Post>>(
       Constants.webServiceUrl,
       params,
       validator,

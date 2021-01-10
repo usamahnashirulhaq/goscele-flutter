@@ -1,3 +1,4 @@
+import 'package:goscele/models/responses/discussion_response.dart';
 import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/models/user_course.dart';
 import 'package:goscele/utils/constants.dart';
@@ -10,6 +11,7 @@ class HiveService {
   Box<dynamic> boxUserInfo;
   Box<UserCourse> boxUserCourses;
   Box<Discussion> boxForum;
+  Box<Post> boxDiscussion;
 
   Future<HiveService> init() async {
     await Hive.initFlutter();
@@ -23,6 +25,7 @@ class HiveService {
   void _registerAdapters() {
     Hive.registerAdapter<UserCourse>(UserCourseAdapter());
     Hive.registerAdapter<Discussion>(DiscussionAdapter());
+    Hive.registerAdapter<Post>(PostAdapter());
   }
 
   /// Opens all the boxes. This will allow the app to use them to access the
@@ -31,10 +34,12 @@ class HiveService {
     await Hive.openBox<dynamic>(Constants.hiveBoxUserInfo);
     await Hive.openBox<UserCourse>(Constants.hiveBoxUserCourses);
     await Hive.openBox<Discussion>(Constants.hiveBoxForum);
+    await Hive.openBox<Post>(Constants.hiveBoxDiscussion);
 
     boxUserInfo = Hive.box<dynamic>(Constants.hiveBoxUserInfo);
     boxUserCourses = Hive.box<UserCourse>(Constants.hiveBoxUserCourses);
     boxForum = Hive.box<Discussion>(Constants.hiveBoxForum);
+    boxDiscussion = Hive.box<Post>(Constants.hiveBoxDiscussion);
   }
 
   /// Clears all the data stored in all boxes.
@@ -42,6 +47,7 @@ class HiveService {
     await boxUserInfo.clear();
     await boxUserCourses.clear();
     await boxForum.clear();
+    await boxDiscussion.clear();
   }
 
   /// Close the boxes so they may not be accessible anymore unless reopened.

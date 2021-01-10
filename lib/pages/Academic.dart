@@ -4,7 +4,6 @@ import 'package:goscele/components/goscele_forum_academic_data_search.dart';
 import 'package:goscele/pages/subpages/GeneralDiscussionViewSection.dart';
 import 'package:goscele/viewmodels/forum_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-import 'dart:developer';
 
 class Academic extends StatelessWidget {
   @override

@@ -3,6 +3,7 @@ class Constants {
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
   static const hiveBoxForum = 'forum';
+  static const hiveBoxDiscussion = 'discussion';
 
   // Hive user data box keys
   static const hiveKeyUserID = 'id';
@@ -22,16 +23,10 @@ class Constants {
   static const hiveAdapterCourse = 1;
 
   // Hive forum box keys
-  static const hiveKeyForumId = "id";
-  static const hiveKeyForumName = "name";
-  static const hiveKeyForumDiscussion = "discussion";
-  static const hiveKeyForumTimemodified = "timemodified";
-  static const hiveKeyForumUserfullname = "userfullname";
-  static const hiveKeyForumSubject = "subject";
-  static const hiveKeyForumMessage = "message";
-  static const hiveKeyForumCreated = "created";
-  static const hiveKeyForumNumreplies = "numreplies";
   static const hiveAdapterForum = 3;
+
+  // Hive discussion box keys
+  static const hiveAdapterDiscussion = 4;
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
@@ -42,6 +37,7 @@ class Constants {
   static const getUserByField = 'core_user_get_users_by_field';
   static const getForumById = 'mod_forum_get_forum_discussions_paginated';
   static const getUserCourses = 'core_enrol_get_users_courses';
+  static const getDiscussionById = "mod_forum_get_forum_discussion_posts";
 
   // API params
   static const paramFunction = 'wsfunction';
@@ -52,8 +48,9 @@ class Constants {
   static const paramPassword = 'password';
   static const paramField = 'field';
   static const paramValues = 'values';
-  static const paramForum = 'forumid';
+  static const paramForumId = 'forumid';
   static const paramUserId = 'userid';
+  static const paramDiscussionId = "discussionid";
 
   // API values
   static const valueService = 'moodle_mobile_app';
@@ -66,4 +63,5 @@ class Constants {
   static var paramSortDirection = "sortdirection";
   static var sortDirectionAsc = "ASC";
   static var sortDirectionDesc = "DESC";
+
 }
