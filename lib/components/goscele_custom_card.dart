@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 class CustomCard extends StatelessWidget {
   final String title;
   List<Widget> fills;
+  VoidCallback callback;
+  double leftMargin;
 
-  CustomCard({@required this.title, this.fills});
+  CustomCard(
+      {@required this.title, this.fills, this.callback, this.leftMargin});
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +45,24 @@ class CustomCard extends StatelessWidget {
       );
     }
 
+    if (callback == null) {
+      callback = () {};
+    }
+
+    if (leftMargin == null) {
+      leftMargin = 0;
+    }
+
     return Card(
-      child: Container(
-        padding: EdgeInsets.fromLTRB(20,10,20,0),
-        child: Column(
-          children: bodyWidget,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      margin: EdgeInsets.fromLTRB(leftMargin, 4, 4, 4),
+      child: InkWell(
+        onTap: callback,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+          child: Column(
+            children: bodyWidget,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+          ),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:goscele/failures/failures.dart';
 import 'package:goscele/failures/network_failure.dart';
+import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/models/responses/responses.dart';
 import 'package:goscele/models/user_course.dart';
 import 'package:goscele/service_locator.dart';
@@ -77,6 +78,62 @@ class ApiService {
     );
   }
 
+  /// Retrieves a list of replies in academic announcements discussion.
+  Future<Either<Failure, List<Discussion>>> getForumData(int id) async {
+    // Required params
+    final params = {
+      Constants.paramFunction: Constants.getForumById,
+      Constants.paramForumId: id,
+    };
+
+    // Response validator
+    final Either<Failure, List<Discussion>> Function(Response) validator = (r) {
+      try {
+        final forumResponse = forumResponseFromJson(r.data);
+        if (forumResponse.discussions.isEmpty)
+          return left(NetworkFailure.emptyResponse);
+        else
+          return right(forumResponse.discussions);
+      } catch (_) {
+        return left(NetworkFailure.emptyResponse);
+      }
+    };
+
+    return await _apiRequestHelper<List<Discussion>>(
+      Constants.webServiceUrl,
+      params,
+      validator,
+    );
+  }
+
+  /// Retrieves a list of replies in academic announcements discussion.
+  Future<Either<Failure, List<Post>>> getDiscussionData(int id) async {
+    // Required params
+    final params = {
+      Constants.paramFunction: Constants.getDiscussionById,
+      Constants.paramDiscussionId: id,
+    };
+
+    // Response validator
+    final Either<Failure, List<Post>> Function(Response) validator = (r) {
+      try {
+        final discussionResponse = postsResponseFromJson(r.data);
+        if (discussionResponse.posts.isEmpty)
+          return left(NetworkFailure.emptyResponse);
+        else
+          return right(discussionResponse.posts);
+      } catch (_) {
+        return left(NetworkFailure.emptyResponse);
+      }
+    };
+
+    return await _apiRequestHelper<List<Post>>(
+      Constants.webServiceUrl,
+      params,
+      validator,
+    );
+  }
+
   /// Retrieves courses enrolled by user based on the [userId]. Returns either a [Failure] or
   /// a [UserCoursesResponse].
   Future<Either<Failure, List<UserCourse>>> getUserCourses(int userId) async {
@@ -111,13 +168,13 @@ class ApiService {
   /// helper must supply the [url] target, [params] required for the request,
   /// and a [validator] function to validate the successfully retrieved response.
   Future<Either<Failure, T>> _apiRequestHelper<T>(
-      String url,
-      Map<String, dynamic> params,
-      Either<Failure, T> Function(Response) validator, {
-        bool usesServiceParam = false,
-        bool usesToken = true,
-        bool isGetRequest = true,
-      }) async {
+    String url,
+    Map<String, dynamic> params,
+    Either<Failure, T> Function(Response) validator, {
+    bool usesServiceParam = false,
+    bool usesToken = true,
+    bool isGetRequest = true,
+  }) async {
     // Prepare additional params
     final Map<String, dynamic> cParams = {
       Constants.paramFormat: Constants.valueJsonFormat,
@@ -125,7 +182,8 @@ class ApiService {
     if (usesServiceParam)
       cParams.putIfAbsent(Constants.paramService, () => Constants.valueService);
     if (usesToken)
-      cParams.putIfAbsent(Constants.paramToken, () => _userDataRepository.token);
+      cParams.putIfAbsent(
+          Constants.paramToken, () => _userDataRepository.token);
 
     // Concatenate params
     final coreParams = {
@@ -139,8 +197,8 @@ class ApiService {
         : await _httpService.postHttp(url, params: coreParams);
 
     return response.fold<Either<Failure, T>>(
-          (l) => left(l),
-          (r) => validator(r),
+      (l) => left(l),
+      (r) => validator(r),
     );
   }
 }

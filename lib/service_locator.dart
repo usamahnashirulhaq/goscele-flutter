@@ -1,7 +1,10 @@
 import 'package:get_it/get_it.dart';
+import 'package:goscele/repositories/discussion_repository.dart';
+import 'package:goscele/repositories/forum_repository.dart';
 import 'package:goscele/repositories/user_courses_repository.dart';
-import 'package:goscele/services/user_courses_service.dart';
+import 'package:goscele/services/forum_service.dart';
 import 'package:goscele/services/services.dart';
+import 'package:goscele/services/user_courses_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 /// Service locator and dependency injection manager
@@ -18,27 +21,47 @@ void setupLocator() {
   locator.registerSingletonAsync<HiveService>(() async => HiveService().init());
 
   locator.registerSingletonAsync<UserCoursesRepository>(
-        () async => UserCoursesRepository(),
+    () async => UserCoursesRepository(),
     dependsOn: [HiveService],
   );
 
   locator.registerSingletonAsync<UserDataRepository>(
-        () async => UserDataRepository(),
+    () async => UserDataRepository(),
+    dependsOn: [HiveService],
+  );
+
+  locator.registerSingletonAsync<ForumRepository>(
+        () async => ForumRepository(),
+    dependsOn: [HiveService],
+  );
+
+  locator.registerSingletonAsync<DiscussionRepository>(
+        () async => DiscussionRepository(),
     dependsOn: [HiveService],
   );
 
   locator.registerSingletonAsync<ApiService>(
-        () async => ApiService(),
+    () async => ApiService(),
     dependsOn: [UserDataRepository],
   );
 
   locator.registerSingletonAsync<UserCoursesService>(
-        () async => UserCoursesService(),
+    () async => UserCoursesService(),
     dependsOn: [UserCoursesRepository, ApiService],
   );
 
   locator.registerSingletonAsync<AuthService>(
-        () async => AuthService(),
+    () async => AuthService(),
     dependsOn: [UserDataRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<ForumService>(
+    () async => ForumService(),
+    dependsOn: [ForumRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<DiscussionService>(
+        () async => DiscussionService(),
+    dependsOn: [DiscussionRepository, ApiService],
   );
 }
