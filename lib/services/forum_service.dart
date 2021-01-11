@@ -14,9 +14,9 @@ class ForumService {
 
   ValueNotifier<Failure> hasFailure = ValueNotifier(const NoFailure());
 
-  Future<void> getGeneralForumData() async {
+  Future<void> getForumDataById(int forumId) async {
     hasFailure.value = const NoFailure();
-    final response = await _apiService.getForumData(Constants.generalForumId);
+    final response = await _apiService.getForumData(forumId);
     response.fold(
       (l) {
         hasFailure.value = l;

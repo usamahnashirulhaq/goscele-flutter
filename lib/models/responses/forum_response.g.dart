@@ -46,7 +46,7 @@ class DiscussionAdapter extends TypeAdapter<Discussion> {
       pinned: fields[27] as bool,
       locked: fields[28] as bool,
       canreply: fields[29] as bool,
-      attachments: (fields[30] as List)?.cast<Attachment>(),
+      attachments: fields[30] as String,
     );
   }
 
@@ -123,6 +123,58 @@ class DiscussionAdapter extends TypeAdapter<Discussion> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is DiscussionAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class AttachmentAdapter extends TypeAdapter<Attachment> {
+  @override
+  final int typeId = 5;
+
+  @override
+  Attachment read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Attachment(
+      filename: fields[1] as String,
+      filepath: fields[2] as String,
+      filesize: fields[3] as int,
+      fileurl: fields[4] as String,
+      timemodified: fields[5] as int,
+      mimetype: fields[6] as String,
+      isexternalfile: fields[7] as bool,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Attachment obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(1)
+      ..write(obj.filename)
+      ..writeByte(2)
+      ..write(obj.filepath)
+      ..writeByte(3)
+      ..write(obj.filesize)
+      ..writeByte(4)
+      ..write(obj.fileurl)
+      ..writeByte(5)
+      ..write(obj.timemodified)
+      ..writeByte(6)
+      ..write(obj.mimetype)
+      ..writeByte(7)
+      ..write(obj.isexternalfile);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AttachmentAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

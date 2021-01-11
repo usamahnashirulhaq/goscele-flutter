@@ -24,6 +24,7 @@ class Constants {
 
   // Hive forum box keys
   static const hiveAdapterForum = 3;
+  static const hiveAdapterForumAttachments = 5;
 
   // Hive discussion box keys
   static const hiveAdapterDiscussion = 4;
@@ -63,5 +64,6 @@ class Constants {
   static var paramSortDirection = "sortdirection";
   static var sortDirectionAsc = "ASC";
   static var sortDirectionDesc = "DESC";
+
 
 }

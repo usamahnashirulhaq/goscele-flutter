@@ -155,7 +155,7 @@ class Discussion {
   bool canreply;
 
   @HiveField(30)
-  List<Attachment> attachments;
+  String attachments;
 
   factory Discussion.fromJson(Map<String, dynamic> json) => Discussion(
         id: json["id"],
@@ -187,10 +187,7 @@ class Discussion {
         pinned: json["pinned"],
         locked: json["locked"],
         canreply: json["canreply"],
-        attachments: json["attachments"] == null
-            ? null
-            : List<Attachment>.from(
-                json["attachments"].map((x) => Attachment.fromJson(x))),
+        attachments: null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -223,12 +220,11 @@ class Discussion {
         "pinned": pinned,
         "locked": locked,
         "canreply": canreply,
-        "attachments": attachments == null
-            ? null
-            : List<dynamic>.from(attachments.map((x) => x.toJson())),
+        "attachments": null,
       };
 }
 
+@HiveType(typeId: Constants.hiveAdapterForumAttachments)
 class Attachment {
   Attachment({
     this.filename,
@@ -240,12 +236,25 @@ class Attachment {
     this.isexternalfile,
   });
 
+  @HiveField(1)
   String filename;
+
+  @HiveField(2)
   String filepath;
+
+  @HiveField(3)
   int filesize;
+
+  @HiveField(4)
   String fileurl;
+
+  @HiveField(5)
   int timemodified;
+
+  @HiveField(6)
   String mimetype;
+
+  @HiveField(7)
   bool isexternalfile;
 
   factory Attachment.fromJson(Map<String, dynamic> json) => Attachment(
@@ -267,18 +276,4 @@ class Attachment {
         "mimetype": mimetype,
         "isexternalfile": isexternalfile,
       };
-}
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
-  }
 }
