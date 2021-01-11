@@ -32,6 +32,5 @@ class CourseAssignmentsService {
   /// Stores the user data retrieved from the backend into the local storage.
   void _setCourseAssignmentsData(CourseAssignments response) {
     _courseAssignmentData.courseAssignments = response;
-    debugPrint("INI DI SERVICE euy ${_courseAssignmentData.courseAssignments.courses.first.fullname}");
   }
 }
