@@ -7,6 +7,7 @@ import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/models/responses/responses.dart';
 import 'package:goscele/models/course_assignments.dart';
 import 'package:goscele/models/user_course.dart';
+import 'package:goscele/repositories/user_data_repository.dart';
 import 'package:goscele/service_locator.dart';
 import 'package:goscele/services/services.dart';
 import 'package:goscele/utils/constants.dart';

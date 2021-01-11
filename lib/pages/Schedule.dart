@@ -12,7 +12,7 @@ class Schedule extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<CourseAssignmentsViewModel>.nonReactive(
         viewModelBuilder: () => CourseAssignmentsViewModel(),
-        onModelReady: (model) => model.onModelReady(),
+        onModelReady: (model) => model.onModelListener(),
         builder: (context, model, child) {
           return Container(
             child: CustomTabController(

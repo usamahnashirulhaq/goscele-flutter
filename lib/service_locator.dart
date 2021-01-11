@@ -4,6 +4,7 @@ import 'package:goscele/repositories/course_category_repository.dart';
 import 'package:goscele/repositories/discussion_repository.dart';
 import 'package:goscele/repositories/forum_repository.dart';
 import 'package:goscele/repositories/user_courses_repository.dart';
+import 'package:goscele/repositories/user_data_repository.dart';
 import 'package:goscele/services/forum_service.dart';
 import 'package:goscele/services/services.dart';
 import 'package:goscele/services/user_courses_service.dart';

@@ -42,13 +42,13 @@ class Course {
   });
 
   @HiveField(1)
-  String fullname;
+  int id;
 
   @HiveField(2)
   String shortname;
 
   @HiveField(3)
-  int id;
+  String fullname;
 
   @HiveField(4)
   int timemodified;
@@ -112,11 +112,13 @@ class Assignment {
 
   @HiveField(1)
   int id;
+
   int cmid;
   int course;
 
   @HiveField(2)
   String name;
+
   int nosubmissions;
   int submissiondrafts;
   int sendnotifications;
@@ -125,6 +127,7 @@ class Assignment {
 
   @HiveField(3)
   int duedate;
+
   int allowsubmissionsfromdate;
   int grade;
   int timemodified;

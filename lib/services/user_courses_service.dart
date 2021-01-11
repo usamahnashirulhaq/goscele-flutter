@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goscele/failures/failures.dart';
 import 'package:goscele/models/user_course.dart';
+import 'package:goscele/repositories/user_courses_repository.dart';
 import 'package:goscele/services/services.dart';
 
 import '../service_locator.dart';

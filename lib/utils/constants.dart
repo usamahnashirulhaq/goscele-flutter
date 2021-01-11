@@ -3,6 +3,8 @@ class Constants {
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
   static const hiveBoxCourseAssignments = 'course_assignments';
+  static const hiveBoxCourseAssignmentsCourses = 'courses';
+  static const hiveBoxCourseAssignmentsAssignment = 'assignments';
   static const hiveBoxForum = 'forum';
   static const hiveBoxDiscussion = 'discussion';
   static const hiveBoxCourseCategory = 'course_category';
@@ -26,32 +28,32 @@ class Constants {
 
   // Hive courses assignments box keys
   static const hiveKeyCourseAssignmentCourses = 'courses';
-  static const hiveAdapterCourseAssignment = 3;
+  static const hiveAdapterCourseAssignment = 2;
 
   // Hive courses (for assignments) box keys
   static const hiveKeyCourseAssignmentCourseID = 'id';
   static const hiveKeyCourseAssignmentCourseShortname = 'shortname';
   static const hiveKeyCourseAssignmentCourseFullname = 'fullname';
   static const hiveKeyCourseAssignmentsCourseAssigments = 'assignments';
-  static const hiveAdapterCourseAssignmentCourse = 4;
+  static const hiveAdapterCourseAssignmentCourse = 3;
 
   // Hive assignments box keys
   static const hiveKeyCourseAssignmentsAssigmentsID = 'id';
   static const hiveKeyCourseAssignmentsAssigmentsName = 'name';
   static const hiveKeyCourseAssignmentsAssignmentsDueDate = 'duedate';
-  static const hiveAdapterAssignment = 5;
+  static const hiveAdapterAssignment = 4;
   
   // Hive forum box keys
-  static const hiveAdapterForum = 3;
-  static const hiveAdapterForumAttachments = 5;
+  static const hiveAdapterForum = 5;
+  static const hiveAdapterForumAttachments = 6;
 
   // Hive discussion box keys
-  static const hiveAdapterDiscussion = 4;
+  static const hiveAdapterDiscussion = 7;
 
   // Hive user courses box keys
   static const hiveKeyCourseCategoryID = 'id';
   static const hiveKeyCourseCategoryName = 'name';
-  static const hiveAdapterCourseCategory = 5;
+  static const hiveAdapterCourseCategory = 8;
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
