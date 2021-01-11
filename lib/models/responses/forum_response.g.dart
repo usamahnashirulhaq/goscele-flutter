@@ -8,7 +8,7 @@ part of 'forum_response.dart';
 
 class DiscussionAdapter extends TypeAdapter<Discussion> {
   @override
-  final int typeId = 3;
+  final int typeId = 5;
 
   @override
   Discussion read(BinaryReader reader) {
@@ -46,13 +46,14 @@ class DiscussionAdapter extends TypeAdapter<Discussion> {
       pinned: fields[27] as bool,
       locked: fields[28] as bool,
       canreply: fields[29] as bool,
+      attachments: (fields[30] as List)?.cast<Attachment>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Discussion obj) {
     writer
-      ..writeByte(29)
+      ..writeByte(30)
       ..writeByte(1)
       ..write(obj.id)
       ..writeByte(2)
@@ -110,7 +111,9 @@ class DiscussionAdapter extends TypeAdapter<Discussion> {
       ..writeByte(28)
       ..write(obj.locked)
       ..writeByte(29)
-      ..write(obj.canreply);
+      ..write(obj.canreply)
+      ..writeByte(30)
+      ..write(obj.attachments);
   }
 
   @override
@@ -126,7 +129,7 @@ class DiscussionAdapter extends TypeAdapter<Discussion> {
 
 class AttachmentAdapter extends TypeAdapter<Attachment> {
   @override
-  final int typeId = 5;
+  final int typeId = 6;
 
   @override
   Attachment read(BinaryReader reader) {
