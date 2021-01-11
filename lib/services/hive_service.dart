@@ -1,3 +1,4 @@
+import 'package:goscele/models/course_assignments.dart';
 import 'package:goscele/models/course_category.dart';
 import 'package:goscele/models/responses/discussion_response.dart';
 import 'package:goscele/models/responses/forum_response.dart';
@@ -11,6 +12,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class HiveService {
   Box<dynamic> boxUserInfo;
   Box<UserCourse> boxUserCourses;
+  Box<CourseAssignments> boxCourseAssignments;
   Box<Discussion> boxForum;
   Box<Post> boxDiscussion;
   Box<CourseCategory> boxCourseCategory;
@@ -26,6 +28,9 @@ class HiveService {
   /// to the boxes. Register the class adapters here.
   void _registerAdapters() {
     Hive.registerAdapter<UserCourse>(UserCourseAdapter());
+    Hive.registerAdapter<CourseAssignments>(CourseAssignmentsAdapter());
+    Hive.registerAdapter<Assignment>(AssignmentAdapter());
+    Hive.registerAdapter<Course>(CourseAdapter());
     Hive.registerAdapter<Discussion>(DiscussionAdapter());
     Hive.registerAdapter<Post>(PostAdapter());
     Hive.registerAdapter<CourseCategory>(CourseCategoryAdapter());
@@ -36,12 +41,14 @@ class HiveService {
   Future<void> _openBoxes() async {
     await Hive.openBox<dynamic>(Constants.hiveBoxUserInfo);
     await Hive.openBox<UserCourse>(Constants.hiveBoxUserCourses);
+    await Hive.openBox<CourseAssignments>(Constants.hiveBoxCourseAssignments);
     await Hive.openBox<Discussion>(Constants.hiveBoxForum);
     await Hive.openBox<Post>(Constants.hiveBoxDiscussion);
     await Hive.openBox<CourseCategory>(Constants.hiveBoxCourseCategory);
 
     boxUserInfo = Hive.box<dynamic>(Constants.hiveBoxUserInfo);
     boxUserCourses = Hive.box<UserCourse>(Constants.hiveBoxUserCourses);
+    boxCourseAssignments = Hive.box<CourseAssignments>(Constants.hiveBoxCourseAssignments);
     boxForum = Hive.box<Discussion>(Constants.hiveBoxForum);
     boxDiscussion = Hive.box<Post>(Constants.hiveBoxDiscussion);
     boxCourseCategory = Hive.box<CourseCategory>(Constants.hiveBoxCourseCategory);
@@ -51,6 +58,7 @@ class HiveService {
   Future<void> clearBoxes() async {
     await boxUserInfo.clear();
     await boxUserCourses.clear();
+    await boxCourseAssignments.clear();
     await boxForum.clear();
     await boxDiscussion.clear();
     await boxCourseCategory.clear();

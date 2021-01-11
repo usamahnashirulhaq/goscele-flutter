@@ -5,6 +5,7 @@ import 'package:goscele/failures/network_failure.dart';
 import 'package:goscele/models/course_category.dart';
 import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/models/responses/responses.dart';
+import 'package:goscele/models/course_assignments.dart';
 import 'package:goscele/models/user_course.dart';
 import 'package:goscele/service_locator.dart';
 import 'package:goscele/services/services.dart';
@@ -164,6 +165,35 @@ class ApiService {
     );
   }
 
+  /// Retrieves courses enrolled by user based on the [userId]. Returns either a [Failure] or
+  /// a [UserCoursesResponse].
+  Future<Either<Failure, CourseAssignments>> getCourseAssignments() async {
+    // Required params
+    final params = {
+      Constants.paramFunction: Constants.getAssignments,
+    };
+
+    // Response validator
+    final Either<Failure, CourseAssignments> Function(Response) validator =
+        (r) {
+      try {
+        final courses = courseAssignmentsFromJson(r.data);
+        if (courses == null)
+          return left(NetworkFailure.responseFailure(4));
+        else
+          return right(courses);
+        } catch (_) {
+        return left(NetworkFailure.cancelled);
+      }
+    };
+  
+  return await _apiRequestHelper<CourseAssignments>(
+    Constants.webServiceUrl,
+      params,
+      validator,
+    );
+  }
+  
   /// Retrieves courses category for all courses Returns either a [Failure] or
   /// a [UserCoursesResponse].
   Future<Either<Failure, List<CourseCategory>>> getCourseCategories() async {
