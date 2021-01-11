@@ -8,7 +8,7 @@ part of 'discussion_response.dart';
 
 class PostAdapter extends TypeAdapter<Post> {
   @override
-  final int typeId = 4;
+  final int typeId = 7;
 
   @override
   Post read(BinaryReader reader) {

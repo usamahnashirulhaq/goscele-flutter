@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:goscele/home_screen_viewmodel.dart';
+import 'file:///F:/Semester%209/OSSD/goscele/goscele/lib/viewmodels/home_screen_viewmodel.dart';
 import 'package:goscele/pages/Home.dart';
 import 'package:goscele/pages/Login.dart';
 import 'package:goscele/service_locator.dart';

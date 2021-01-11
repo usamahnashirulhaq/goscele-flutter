@@ -8,7 +8,7 @@ part of 'forum_response.dart';
 
 class DiscussionAdapter extends TypeAdapter<Discussion> {
   @override
-  final int typeId = 3;
+  final int typeId = 5;
 
   @override
   Discussion read(BinaryReader reader) {
@@ -126,7 +126,7 @@ class DiscussionAdapter extends TypeAdapter<Discussion> {
 
 class AttachmentAdapter extends TypeAdapter<Attachment> {
   @override
-  final int typeId = 5;
+  final int typeId = 6;
 
   @override
   Attachment read(BinaryReader reader) {

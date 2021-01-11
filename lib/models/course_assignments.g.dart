@@ -8,7 +8,7 @@ part of 'course_assignments.dart';
 
 class CourseAssignmentsAdapter extends TypeAdapter<CourseAssignments> {
   @override
-  final int typeId = 3;
+  final int typeId = 2;
 
   @override
   CourseAssignments read(BinaryReader reader) {
@@ -42,7 +42,7 @@ class CourseAssignmentsAdapter extends TypeAdapter<CourseAssignments> {
 
 class CourseAdapter extends TypeAdapter<Course> {
   @override
-  final int typeId = 4;
+  final int typeId = 3;
 
   @override
   Course read(BinaryReader reader) {
@@ -88,7 +88,7 @@ class CourseAdapter extends TypeAdapter<Course> {
 
 class AssignmentAdapter extends TypeAdapter<Assignment> {
   @override
-  final int typeId = 5;
+  final int typeId = 4;
 
   @override
   Assignment read(BinaryReader reader) {

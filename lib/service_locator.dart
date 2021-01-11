@@ -7,6 +7,7 @@ import 'package:goscele/repositories/user_courses_repository.dart';
 import 'package:goscele/services/forum_service.dart';
 import 'package:goscele/services/services.dart';
 import 'package:goscele/services/user_courses_service.dart';
+import 'package:goscele/viewmodels/forum_viewmodel.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 /// Service locator and dependency injection manager
@@ -20,6 +21,10 @@ void setupLocator() {
   locator.registerSingleton(NavigationService());
   locator.registerSingleton(ConnectivityService());
   locator.registerSingleton(HttpService());
+
+  /// Bad practices: shouldn't make a singleton
+  /// viewmodel. Issue!
+  locator.registerSingleton(ForumViewModel());
   locator.registerSingletonAsync<HiveService>(() async => HiveService().init());
 
   locator.registerSingletonAsync<UserCoursesRepository>(
