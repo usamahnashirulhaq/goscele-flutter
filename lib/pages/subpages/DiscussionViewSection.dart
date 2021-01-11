@@ -7,7 +7,7 @@ import 'package:goscele/pages/DiscussionFocus.dart';
 import 'package:goscele/viewmodels/forum_viewmodel.dart';
 import 'package:stacked_hooks/stacked_hooks.dart';
 
-class GeneralDiscussionViewSection extends HookViewModelWidget<ForumViewModel> {
+class DiscussionViewSection extends HookViewModelWidget<ForumViewModel> {
   final parent = 0;
 
   @override

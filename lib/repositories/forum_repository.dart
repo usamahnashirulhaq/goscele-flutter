@@ -8,6 +8,10 @@ class ForumRepository {
 
   List<Discussion> get discussions => _forumBox.values;
 
+  clearData() {
+    _forumBox.clear();
+  }
+
   set discussions(List<Discussion> discussions) {
     discussions
         .forEach((discussion) => _forumBox.put(discussion.id, discussion));
