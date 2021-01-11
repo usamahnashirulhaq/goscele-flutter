@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:goscele/repositories/course_assignments_repository.dart';
+import 'package:goscele/repositories/course_category_repository.dart';
 import 'package:goscele/repositories/discussion_repository.dart';
 import 'package:goscele/repositories/forum_repository.dart';
 import 'package:goscele/repositories/user_courses_repository.dart';
@@ -40,6 +42,16 @@ void setupLocator() {
     dependsOn: [HiveService],
   );
 
+  locator.registerSingletonAsync<CourseCategoryRepository>(
+        () async => CourseCategoryRepository(),
+    dependsOn: [HiveService],
+  );
+
+  locator.registerSingletonAsync<CourseAssignmentsRepository>(
+        () async => CourseAssignmentsRepository(),
+    dependsOn: [HiveService],
+  );
+
   locator.registerSingletonAsync<ApiService>(
     () async => ApiService(),
     dependsOn: [UserDataRepository],
@@ -48,6 +60,11 @@ void setupLocator() {
   locator.registerSingletonAsync<UserCoursesService>(
     () async => UserCoursesService(),
     dependsOn: [UserCoursesRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<CourseAssignmentsService>(
+        () async => CourseAssignmentsService(),
+    dependsOn: [CourseAssignmentsRepository, ApiService],
   );
 
   locator.registerSingletonAsync<AuthService>(
@@ -63,5 +80,10 @@ void setupLocator() {
   locator.registerSingletonAsync<DiscussionService>(
         () async => DiscussionService(),
     dependsOn: [DiscussionRepository, ApiService],
+  );
+
+  locator.registerSingletonAsync<CourseCategoryService>(
+        () async => CourseCategoryService(),
+    dependsOn: [CourseCategoryRepository, ApiService],
   );
 }

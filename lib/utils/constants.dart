@@ -2,8 +2,10 @@ class Constants {
   // Hive boxes names
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
+  static const hiveBoxCourseAssignments = 'course_assignments';
   static const hiveBoxForum = 'forum';
   static const hiveBoxDiscussion = 'discussion';
+  static const hiveBoxCourseCategory = 'course_category';
 
   // Hive user data box keys
   static const hiveKeyUserID = 'id';
@@ -22,12 +24,34 @@ class Constants {
   static const hiveKeyCourseCategory = 'category';
   static const hiveAdapterCourse = 1;
 
+  // Hive courses assignments box keys
+  static const hiveKeyCourseAssignmentCourses = 'courses';
+  static const hiveAdapterCourseAssignment = 3;
+
+  // Hive courses (for assignments) box keys
+  static const hiveKeyCourseAssignmentCourseID = 'id';
+  static const hiveKeyCourseAssignmentCourseShortname = 'shortname';
+  static const hiveKeyCourseAssignmentCourseFullname = 'fullname';
+  static const hiveKeyCourseAssignmentsCourseAssigments = 'assignments';
+  static const hiveAdapterCourseAssignmentCourse = 4;
+
+  // Hive assignments box keys
+  static const hiveKeyCourseAssignmentsAssigmentsID = 'id';
+  static const hiveKeyCourseAssignmentsAssigmentsName = 'name';
+  static const hiveKeyCourseAssignmentsAssignmentsDueDate = 'duedate';
+  static const hiveAdapterAssignment = 5;
+  
   // Hive forum box keys
   static const hiveAdapterForum = 3;
   static const hiveAdapterForumAttachments = 5;
 
   // Hive discussion box keys
   static const hiveAdapterDiscussion = 4;
+
+  // Hive user courses box keys
+  static const hiveKeyCourseCategoryID = 'id';
+  static const hiveKeyCourseCategoryName = 'name';
+  static const hiveAdapterCourseCategory = 5;
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
@@ -38,7 +62,9 @@ class Constants {
   static const getUserByField = 'core_user_get_users_by_field';
   static const getForumById = 'mod_forum_get_forum_discussions_paginated';
   static const getUserCourses = 'core_enrol_get_users_courses';
+  static const getAssignments = 'mod_assign_get_assignments';
   static const getDiscussionById = "mod_forum_get_forum_discussion_posts";
+  static const getCourseCategory = "core_course_get_categories";
 
   // API params
   static const paramFunction = 'wsfunction';

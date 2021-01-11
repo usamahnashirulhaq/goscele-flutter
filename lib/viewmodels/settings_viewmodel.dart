@@ -11,7 +11,6 @@ class SettingsViewModel extends BaseViewModel with FailureListener {
   static final _dialogService = locator<DialogService>();
   static final _userDataRepository = locator<UserDataRepository>();
 
-
   Future<DialogResponse> _dialogResponse;
 
   /// Logout from the Moodle service while showing a [FutureLoaderDialog].

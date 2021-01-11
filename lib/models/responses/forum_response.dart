@@ -154,8 +154,7 @@ class Discussion {
   @HiveField(29)
   bool canreply;
 
-  @HiveField(30)
-  String attachments;
+  List<Attachment> attachments;
 
   factory Discussion.fromJson(Map<String, dynamic> json) => Discussion(
         id: json["id"],
