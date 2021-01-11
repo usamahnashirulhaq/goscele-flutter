@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goscele/pages/subpages/DiscussionViewSection.dart';
+import 'package:goscele/viewmodels/forum_viewmodel.dart';
+import 'package:stacked/stacked.dart';
 
 class ForumDataSearch extends SearchDelegate<String> {
   List<String> _data = [
@@ -22,7 +25,10 @@ class ForumDataSearch extends SearchDelegate<String> {
     "Forum Helpdesk",
     "Forum Penulisan Ilmiah MIK DIK"
   ];
-  List<String> _recent = ["Pengumuman Akademis"];
+
+  int selectedId = 3;
+
+  final int academicAnnouncementId = 1;
 
   @override
   String get searchFieldLabel => "Type 'forum' to see all";
@@ -53,45 +59,42 @@ class ForumDataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Center(
-      child: Card(
-        color: Colors.grey,
-        child: Center(
-          child: Text("Not Implemented yet"),
-        ),
-      ),
+    return ViewModelBuilder<ForumViewModel>.nonReactive(
+      viewModelBuilder: () => ForumViewModel(),
+      onModelReady: (model) => model.onModelReady(selectedId),
+      builder: (context, model, child) {
+        return Scaffold(
+          body: DiscussionViewSection(),
+        );
+      },
     );
   }
-
-
 
   @override
   Widget buildSuggestions(BuildContext context) {
     final _suggestionList = query.isEmpty
-        ? _recent
-        : _data.where((element) => element.toLowerCase().contains(query.toLowerCase())).toList();
+        ? _data
+        : _data
+            .where((element) =>
+                element.toLowerCase().contains(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
         onTap: () {
-          _suggestionList.add(query);
+          // _suggestionList.add(query);
           showResults(context);
         },
         leading: Icon(Icons.forum),
         title: RichText(
-            text: TextSpan(
-                text: _suggestionList[index].substring(0, query.length),
-                style: TextStyle(
-                    color: Colors.black54),
-                    // color: Colors.black87, fontWeight: FontWeight.bold),
-                children: [
-              TextSpan(
-                  text: _suggestionList[index].substring(query.length),
-                  style: TextStyle(color: Colors.black54))
-            ])),
+          text: TextSpan(
+            text: _suggestionList[index],
+            style: TextStyle(color: Colors.black54),
+            // color: Colors.black87, fontWeight: FontWeight.bold),
+          ),
+        ),
       ),
       itemCount: _suggestionList.length,
-
     );
   }
 }

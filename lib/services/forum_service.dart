@@ -3,7 +3,6 @@ import 'package:goscele/failures/failures.dart';
 import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/repositories/forum_repository.dart';
 import 'package:goscele/services/services.dart';
-import 'package:goscele/utils/constants.dart';
 
 import '../service_locator.dart';
 import 'api_service.dart';
@@ -16,6 +15,7 @@ class ForumService {
 
   Future<void> getForumDataById(int forumId) async {
     hasFailure.value = const NoFailure();
+    _forumData.clearData();
     final response = await _apiService.getForumData(forumId);
     response.fold(
       (l) {
