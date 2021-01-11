@@ -10,9 +10,6 @@ class ClassScheduleViewSection
   @override
   Widget buildViewModelWidget(BuildContext context,
       CourseAssignmentsViewModel viewModel) {
-    /// [createEventsMap()] perlu dipanggil disini untuk menyembunyikan tampilan eror di CalendarViewSection.dart
-    /// Kebetulan halaman ini belum diimplement jadi dicall disini saja events generatornya
-    viewModel.createEventsMap();
 
     return SingleChildScrollView(
       child: Container(

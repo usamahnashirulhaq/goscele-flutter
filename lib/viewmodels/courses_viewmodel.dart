@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:goscele/models/user_course.dart';
 import 'package:goscele/repositories/course_category_repository.dart';
+import 'package:goscele/repositories/user_courses_repository.dart';
+import 'package:goscele/repositories/user_data_repository.dart';
 import 'package:goscele/service_locator.dart';
 import 'package:goscele/services/services.dart';
 import 'package:goscele/utils/failure_listener_mixin.dart';
@@ -34,9 +36,11 @@ class CoursesViewModel extends FutureViewModel with FailureListener {
   /// Menyiapkan data-data yang akan digunakan pada UI level setelah fetch data dari
   /// webservice selesai dilakukan
   void onModelListener(){
+    courses.value =  _userCoursesRepository.courses;
+
     /// Listen to local storage changes and update live data (user_course)
     _userCoursesBox.listenable().addListener(() {
-      courses.value = _userCoursesRepository.courses.toList();
+      courses.value = _userCoursesRepository.courses;
     });
 
     _currentCategories();

@@ -51,8 +51,8 @@ class CourseAdapter extends TypeAdapter<Course> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Course(
-      id: fields[3] as int,
-      fullname: fields[1] as String,
+      id: fields[1] as int,
+      fullname: fields[3] as String,
       shortname: fields[2] as String,
       timemodified: fields[4] as int,
       assignments: (fields[5] as List)?.cast<Assignment>(),
@@ -64,11 +64,11 @@ class CourseAdapter extends TypeAdapter<Course> {
     writer
       ..writeByte(5)
       ..writeByte(1)
-      ..write(obj.fullname)
+      ..write(obj.id)
       ..writeByte(2)
       ..write(obj.shortname)
       ..writeByte(3)
-      ..write(obj.id)
+      ..write(obj.fullname)
       ..writeByte(4)
       ..write(obj.timemodified)
       ..writeByte(5)

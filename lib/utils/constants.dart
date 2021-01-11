@@ -3,6 +3,8 @@ class Constants {
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
   static const hiveBoxCourseAssignments = 'course_assignments';
+  static const hiveBoxCourseAssignmentsCourses = 'courses';
+  static const hiveBoxCourseAssignmentsAssignment = 'assignments';
   static const hiveBoxForum = 'forum';
   static const hiveBoxOtherForum = 'other_forum';
   static const hiveBoxDiscussion = 'discussion';
