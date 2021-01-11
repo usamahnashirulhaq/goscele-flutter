@@ -19,6 +19,7 @@ dependencies:
   hive_flutter: ^0.3.1 # Extension for Hive to work on Flutter
   dartz: ^0.9.2 # Functional programming package
   connectivity: ^2.0.2 # Internet connection checker package
+  intl: 0.15.7
 
   # State management packages
   stacked: ^1.7.7 # Package to implement MVVM pattern using Provider

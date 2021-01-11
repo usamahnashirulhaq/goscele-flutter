@@ -16,9 +16,7 @@ class AllCoursesViewSection extends HookViewModelWidget<CoursesViewModel> {
         itemCount: courses.length,
         itemBuilder: (context, index) {
           final course = courses[index];
-          return CustomCard(
-          title: course.fullname,
-          fills: [
+          return CustomCard(title: course.fullname, fills: [
             CustomCardCourse(
               course.shortname,
             ),

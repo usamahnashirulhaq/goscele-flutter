@@ -3,6 +3,9 @@ class Constants {
   static const hiveBoxUserInfo = 'user_info';
   static const hiveBoxUserCourses = 'user_courses';
   static const hiveBoxCourseAssignments = 'course_assignments';
+  static const hiveBoxForum = 'forum';
+  static const hiveBoxDiscussion = 'discussion';
+  static const hiveBoxCourseCategory = 'course_category';
 
   // Hive user data box keys
   static const hiveKeyUserID = 'id';
@@ -37,6 +40,17 @@ class Constants {
   static const hiveKeyCourseAssignmentsAssigmentsName = 'name';
   static const hiveKeyCourseAssignmentsAssignmentsDueDate = 'duedate';
   static const hiveAdapterAssignment = 5;
+  
+  // Hive forum box keys
+  static const hiveAdapterForum = 3;
+
+  // Hive discussion box keys
+  static const hiveAdapterDiscussion = 4;
+
+  // Hive user courses box keys
+  static const hiveKeyCourseCategoryID = 'id';
+  static const hiveKeyCourseCategoryName = 'name';
+  static const hiveAdapterCourseCategory = 5;
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
@@ -45,8 +59,11 @@ class Constants {
 
   // API endpoints
   static const getUserByField = 'core_user_get_users_by_field';
+  static const getForumById = 'mod_forum_get_forum_discussions_paginated';
   static const getUserCourses = 'core_enrol_get_users_courses';
   static const getAssignments = 'mod_assign_get_assignments';
+  static const getDiscussionById = "mod_forum_get_forum_discussion_posts";
+  static const getCourseCategory = "core_course_get_categories";
 
   // API params
   static const paramFunction = 'wsfunction';
@@ -57,10 +74,20 @@ class Constants {
   static const paramPassword = 'password';
   static const paramField = 'field';
   static const paramValues = 'values';
+  static const paramForumId = 'forumid';
   static const paramUserId = 'userid';
+  static const paramDiscussionId = "discussionid";
 
   // API values
   static const valueService = 'moodle_mobile_app';
   static const valueJsonFormat = 'json';
   static const valueUsername = 'username';
+
+  // Forum IDs
+  static const generalForumId = 1;
+
+  static var paramSortDirection = "sortdirection";
+  static var sortDirectionAsc = "ASC";
+  static var sortDirectionDesc = "DESC";
+
 }
