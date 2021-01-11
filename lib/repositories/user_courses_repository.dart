@@ -7,7 +7,7 @@ import 'package:goscele/services/hive_service.dart';
 class UserCoursesRepository {
   static final _userCoursesBox = locator<HiveService>().boxUserCourses;
 
-  List<UserCourse> get courses => _userCoursesBox.values;
+  List<UserCourse> get courses => _userCoursesBox.values.toList();
 
   set courses(List<UserCourse> courses) {
     courses.forEach((course) => _userCoursesBox.put(course.id, course));

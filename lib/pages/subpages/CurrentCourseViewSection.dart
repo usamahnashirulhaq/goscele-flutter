@@ -2,31 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:goscele/components/goscele_custom_card.dart';
 import 'package:goscele/components/goscele_custom_card_course.dart';
+import 'package:goscele/viewmodels/courses_viewmodel.dart';
+import 'package:stacked/stacked.dart';
 
-class CurrentCoursesViewSection extends StatelessWidget {
+class CurrentCoursesViewSection extends ViewModelWidget<CoursesViewModel> {
   @override
-  Widget build(BuildContext context) {
-    //TODO ganti jadi Widget yang nampilin Current Courses
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [
-            CustomCard(
-              title: "Monday",
-              fills: [],
+  Widget build(BuildContext context, CoursesViewModel viewModel) {
+    final currentCourses = viewModel.currentCourses;
+
+    return ListView.builder(
+        itemCount: currentCourses.length,
+        itemBuilder: (context, index) {
+          final course = currentCourses[index];
+          return CustomCard(title: course.fullname, fills: [
+            CustomCardCourse(
+              course.shortname,
             ),
-            CustomCard(
-              title: "Tuesday",
-              fills: [
-                CustomCardCourse(
-                  "TKBM TPL",
-                ),
-              ],
-            )
-          ],
-        ),
-        padding: EdgeInsets.all(10),
-      ),
-    );
+          ]);
+        });
   }
 }
