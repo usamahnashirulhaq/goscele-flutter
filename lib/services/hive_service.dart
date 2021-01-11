@@ -16,6 +16,7 @@ class HiveService {
   Box<Assignment> boxAssignments;
   Box<Course> boxCourse;
   Box<Discussion> boxForum;
+  Box<Discussion> boxOtherForum;
   Box<Post> boxDiscussion;
   Box<CourseCategory> boxCourseCategory;
 
@@ -56,6 +57,7 @@ class HiveService {
     boxAssignments = Hive.box<Assignment>(Constants.hiveBoxCourseAssignmentsAssignment);
     boxCourse = Hive.box<Course>(Constants.hiveBoxCourseAssignmentsCourses);
     boxForum = Hive.box<Discussion>(Constants.hiveBoxForum);
+    boxOtherForum = Hive.box<Discussion>(Constants.hiveBoxForum);
     boxDiscussion = Hive.box<Post>(Constants.hiveBoxDiscussion);
     boxCourseCategory = Hive.box<CourseCategory>(Constants.hiveBoxCourseCategory);
   }
@@ -68,6 +70,7 @@ class HiveService {
     await boxAssignments.clear();
     await boxCourse.clear();
     await boxForum.clear();
+    await boxOtherForum.clear();
     await boxDiscussion.clear();
     await boxCourseCategory.clear();
   }

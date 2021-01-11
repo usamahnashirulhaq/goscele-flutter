@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:goscele/pages/subpages/DiscussionViewSection.dart';
+import 'package:goscele/pages/subpages/OtherDiscussionViewSection.dart';
+import 'package:goscele/service_locator.dart';
+import 'package:goscele/utils/constants.dart';
 import 'package:goscele/viewmodels/forum_viewmodel.dart';
+import 'package:goscele/viewmodels/other_forum_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class ForumDataSearch extends SearchDelegate<String> {
   List<String> _data = [
-    "Pengumuman Akademis",
     "Forum Kurikulum 2016",
     "Forum Umum",
     "Forum KP - ST - TA",
@@ -26,9 +28,8 @@ class ForumDataSearch extends SearchDelegate<String> {
     "Forum Penulisan Ilmiah MIK DIK"
   ];
 
-  int selectedId = 3;
-
-  final int academicAnnouncementId = 1;
+  String _selectedKey;
+  int _selectedId;
 
   @override
   String get searchFieldLabel => "Type 'forum' to see all";
@@ -53,18 +54,24 @@ class ForumDataSearch extends SearchDelegate<String> {
       ),
       onPressed: () {
         close(context, null);
+        /// Bad practices: shouldn't force 'onModelReady' with singleton
+        /// viewmodel. Issue!
+        locator<ForumViewModel>().onModelReady(Constants.pengumumanAkademisID);
       },
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    return ViewModelBuilder<ForumViewModel>.nonReactive(
-      viewModelBuilder: () => ForumViewModel(),
-      onModelReady: (model) => model.onModelReady(selectedId),
+    _selectedId = Constants.forumMapId[_selectedKey];
+
+    return ViewModelBuilder<OtherForumViewModel>.nonReactive(
+      key: Key("forum-$_selectedId}"),
+      viewModelBuilder: () => OtherForumViewModel(),
+      onModelReady: (model) => model.onModelReady(_selectedId),
       builder: (context, model, child) {
         return Scaffold(
-          body: DiscussionViewSection(),
+          body: OtherDiscussionViewSection(),
         );
       },
     );
@@ -82,7 +89,7 @@ class ForumDataSearch extends SearchDelegate<String> {
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
         onTap: () {
-          // _suggestionList.add(query);
+          _selectedKey = _suggestionList[index];
           showResults(context);
         },
         leading: Icon(Icons.forum),

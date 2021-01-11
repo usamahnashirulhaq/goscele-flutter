@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:goscele/components/goscele_forum_academic_data_search.dart';
 import 'package:goscele/pages/subpages/DiscussionViewSection.dart';
+import 'package:goscele/service_locator.dart';
 import 'package:goscele/utils/constants.dart';
 import 'package:goscele/viewmodels/forum_viewmodel.dart';
 import 'package:stacked/stacked.dart';
@@ -12,8 +13,11 @@ class Academic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ForumViewModel>.nonReactive(
-      viewModelBuilder: () => ForumViewModel(),
-      onModelReady: (model) => model.onModelReady(Constants.generalForumId),
+      key: Key("Announcements"),
+      initialiseSpecialViewModelsOnce: true,
+      disposeViewModel: false,
+      viewModelBuilder: () => locator<ForumViewModel>(),
+      onModelReady: (model) => model.onModelReady(Constants.pengumumanAkademisID),
       builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(

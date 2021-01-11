@@ -6,6 +6,7 @@ class Constants {
   static const hiveBoxCourseAssignmentsCourses = 'courses';
   static const hiveBoxCourseAssignmentsAssignment = 'assignments';
   static const hiveBoxForum = 'forum';
+  static const hiveBoxOtherForum = 'other_forum';
   static const hiveBoxDiscussion = 'discussion';
   static const hiveBoxCourseCategory = 'course_category';
 
@@ -42,7 +43,7 @@ class Constants {
   static const hiveKeyCourseAssignmentsAssigmentsName = 'name';
   static const hiveKeyCourseAssignmentsAssignmentsDueDate = 'duedate';
   static const hiveAdapterAssignment = 4;
-  
+
   // Hive forum box keys
   static const hiveAdapterForum = 5;
   static const hiveAdapterForumAttachments = 6;
@@ -54,6 +55,28 @@ class Constants {
   static const hiveKeyCourseCategoryID = 'id';
   static const hiveKeyCourseCategoryName = 'name';
   static const hiveAdapterCourseCategory = 8;
+
+  // Forum title and id
+  static const pengumumanAkademisID = 1;
+  static const Map<String, int> forumMapId = {
+    "Forum Umum": 2,
+    "Forum KP - ST - TA": 3,
+    "Forum Perpustakaan": 4,
+    "Forum Beasiswa": 5,
+    "Forum Asisten": 5420,
+    "Forum Feedback": 6,
+    "Forum Usul": 7,
+    "Forum Santai": 8,
+    "Forum Tanya-Jawab": 9,
+    "Forum Lowongan": 10,
+    "Forum Peraturan Akademis": 11,
+    "Forum Lost and Found": 12,
+    "Forum UKM": 13,
+    "Forum Kompetisi": 14,
+    "Forum Informasi Wisudawan": 15,
+    "Forum Helpdesk": 16,
+    "Forum Penulisan Ilmiah MIK DIK": 16698
+  };
 
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
@@ -92,6 +115,4 @@ class Constants {
   static var paramSortDirection = "sortdirection";
   static var sortDirectionAsc = "ASC";
   static var sortDirectionDesc = "DESC";
-
-
 }

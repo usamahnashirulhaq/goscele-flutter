@@ -7,17 +7,17 @@ import 'package:goscele/utils/failure_listener_mixin.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stacked/stacked.dart';
 
-class ForumViewModel extends BaseViewModel with FailureListener {
+class OtherForumViewModel extends BaseViewModel with FailureListener {
   static final _forumService = locator<ForumService>();
-  static final _forumBox = locator<HiveService>().boxForum;
+  static final _otherForumBox = locator<HiveService>().boxOtherForum;
 
   ValueNotifier<List<Discussion>> discussions = ValueNotifier([]);
 
   void onModelReady(int forumId) {
     _forumService.getForumDataById(forumId);
 
-    _forumBox.listenable().addListener(() {
-      discussions.value = _forumBox.values.toList();
+    _otherForumBox.listenable().addListener(() {
+      discussions.value = _otherForumBox.values.toList();
     });
   }
 }
