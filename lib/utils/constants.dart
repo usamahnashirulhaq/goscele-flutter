@@ -4,6 +4,7 @@ class Constants {
   static const hiveBoxUserCourses = 'user_courses';
   static const hiveBoxForum = 'forum';
   static const hiveBoxDiscussion = 'discussion';
+  static const hiveBoxCourseCategory = 'course_category';
 
   // Hive user data box keys
   static const hiveKeyUserID = 'id';
@@ -28,6 +29,11 @@ class Constants {
   // Hive discussion box keys
   static const hiveAdapterDiscussion = 4;
 
+  // Hive user courses box keys
+  static const hiveKeyCourseCategoryID = 'id';
+  static const hiveKeyCourseCategoryName = 'name';
+  static const hiveAdapterCourseCategory = 5;
+
   // API urls
   static const baseUrl = 'https://scele-dev.cs.ui.ac.id/';
   static const loginUrl = baseUrl + 'login/token.php';
@@ -38,6 +44,7 @@ class Constants {
   static const getForumById = 'mod_forum_get_forum_discussions_paginated';
   static const getUserCourses = 'core_enrol_get_users_courses';
   static const getDiscussionById = "mod_forum_get_forum_discussion_posts";
+  static const getCourseCategory = "core_course_get_categories";
 
   // API params
   static const paramFunction = 'wsfunction';

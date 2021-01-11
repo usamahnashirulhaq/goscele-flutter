@@ -14,7 +14,7 @@ class Courses extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<CoursesViewModel>.nonReactive(
         viewModelBuilder: () => CoursesViewModel(),
-        onModelReady: (model) => model.onModelReady(),
+        onModelReady: (model) => model.onModelListener(),
         builder: (context, model, child) {
           return CustomTabController(
             backgroundColor: Color.fromRGBO(0, 172, 223, 1),

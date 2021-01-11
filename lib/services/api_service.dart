@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:goscele/failures/failures.dart';
 import 'package:goscele/failures/network_failure.dart';
+import 'package:goscele/models/course_category.dart';
 import 'package:goscele/models/responses/forum_response.dart';
 import 'package:goscele/models/responses/responses.dart';
 import 'package:goscele/models/user_course.dart';
@@ -157,6 +158,34 @@ class ApiService {
     };
 
     return await _apiRequestHelper<List<UserCourse>>(
+      Constants.webServiceUrl,
+      params,
+      validator,
+    );
+  }
+
+  /// Retrieves courses category for all courses Returns either a [Failure] or
+  /// a [UserCoursesResponse].
+  Future<Either<Failure, List<CourseCategory>>> getCourseCategories() async {
+    // Required params
+    final params = {
+      Constants.paramFunction: Constants.getCourseCategory,
+    };
+
+    // Response validator
+    final Either<Failure, List<CourseCategory>> Function(Response) validator = (r) {
+      try {
+        final categories = courseCategoryFromJson(r.data);
+        if (categories.isEmpty)
+          return left(NetworkFailure.responseFailure(4));
+        else
+          return right(categories);
+      } catch (_) {
+        return left(NetworkFailure.cancelled);
+      }
+    };
+
+    return await _apiRequestHelper<List<CourseCategory>>(
       Constants.webServiceUrl,
       params,
       validator,

@@ -7,3 +7,4 @@ export '../repositories/user_data_repository.dart';
 export '../repositories/user_courses_repository.dart';
 export 'user_courses_service.dart';
 export 'discussion_service.dart';
+export 'course_category_service.dart';
