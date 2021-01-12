@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2020 usamah1707
+Copyright (c) 2020 Usamah Nashirul Haq (https://github.com/usamah1707/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
