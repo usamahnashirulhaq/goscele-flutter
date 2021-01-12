@@ -11,7 +11,7 @@ Aplikasi GoScele merupakan aplikasi Scele Fasilkom berbasis mobile. Aplikasi ini
 
 GoScele is a Scele Fasilkom application based on the mobile platform. This application is intended to help Fasilkom UI students who want to open Scele Fasilkom using their device without having to open a laptop or computer first. 
 
-GoScele is an open source project and my first hybrid application with Dart language.
+GoScele is an open source project and my first hybrid application with Dart and Flutter.
 
 
 How to Contribute
