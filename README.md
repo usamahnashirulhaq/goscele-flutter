@@ -5,9 +5,6 @@ GoScele
 
 GoScele is mobile version of Scele Fasilkom UI.
 
-Getting Started
----------------
-
 About App
 ---------
 Aplikasi GoScele merupakan aplikasi Scele Fasilkom berbasis mobile. Aplikasi ini bertujuan untuk membantu mahasiswa Fasilkom UI yang ingin membuka Scele Fasilkom menggunakan gawai tanpa harus membuat laptop atau komputer terlebih dahulu.
