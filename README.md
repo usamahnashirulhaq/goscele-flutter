@@ -22,7 +22,7 @@ Requirement:
 
 Steps:
 1. Fork this repository https://github.com/usamah1707/goscele-flutter
-2. Clone repository with command “git clone https://github.com/usamah1707/goscele-flutter”
+2. Clone repository with command “git clone https://github.com/usamah1707/goscele-flutter ”
 3. Make new Branch with command “git checkout -b [nama-branch]”
 4. Code
 5. Git add with command “git add .”
