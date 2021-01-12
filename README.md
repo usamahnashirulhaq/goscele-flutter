@@ -13,13 +13,14 @@ GoScele is a Scele Fasilkom application based on the mobile platform. This appli
 
 GoScele is an open source project and my first hybrid application with Dart language.
 
+
 How to Contribute
 -----------------
-# Requirement
+Requirement:
 - Android Studio
 - Flutter
 
-# Steps
+Steps:
 1. Fork this repository https://github.com/usamah1707/goscele-flutter
 2. Clone repository with command “git clone https://github.com/usamah1707/goscele-flutter”
 3. Make new Branch with command “git checkout -b [nama-branch]”
@@ -35,8 +36,7 @@ Development Channel
 
 License
 -------
-
-# MIT License
+MIT License
 
 Copyright (c) 2020 Usamah Nashirul Haq
 
